@@ -1,4 +1,10 @@
 Library::Application.routes.draw do
+  resources :authors
+
+  resources :reservations
+
+  resources :users
+
   resources :books
 
   # The priority is based upon order of creation: first created -> highest priority.
