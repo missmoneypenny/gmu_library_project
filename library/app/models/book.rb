@@ -4,7 +4,7 @@ class Book < ActiveRecord::Base
   validates :abstract length: { minimum: 15 }
   validates :pages, :total_in_library, numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :genre, inclusion: { in: GENRE }
- 
+ has_many :reservations
   
   
 end
