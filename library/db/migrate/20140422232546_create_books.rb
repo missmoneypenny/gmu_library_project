@@ -10,7 +10,7 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :pages
       t.string :image_cover_url
       t.date :published_on
-      t.integer :total_in_libarary
+      t.integer :total_in_library
       t.datetime :created_at
       t.datetime :updated_at
 
