@@ -1,9 +1,9 @@
 Library::Application.routes.draw do
+  resources :users
+
   resources :authors
 
   resources :reservations
-
-  resources :users
 
   resources :books
   
