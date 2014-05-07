@@ -1,0 +1,15 @@
+<%= form_for(@book) do |f| %>
+<%= render 'shared/validation_errors', object: @book %>
+  <%= f.label :title %> <%= f.text_field :title, autofocus: true %><br />
+  <%= f.label :author %> <%= f.text_field :author %><br />
+  <%= f.label :pages %> <%= f.text_field :pages %><br />
+  <%= f.label :price %> <%= f.text_field :price %><br />
+  <%= f.label :isbn %> <%= f.text_field :isbn %><br />
+  <%= f.select :genre, Book::GENRE, {prompt: "Pick one"} %><br />
+  <%= f.label :abstract %> <%= f.text_field :abstract %><br />
+  <%= f.label :image_url %> <%= f.text_field :price %><br />
+  <p>
+    <%= f.submit %>
+    <%= link_to 'Cancel', books_path %>
+  </p>
+<% end %>
