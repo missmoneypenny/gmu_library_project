@@ -31,7 +31,25 @@ class UsersController < ApplicationController
   end
  
   def index
+<<<<<<< HEAD
     @users = User.all
+=======
+    #@users = User.order(:name)
+  end
+  
+  def new
+    @user = @book.users.new
+  end
+
+  def show
+    @user = User.new
+  end
+
+private
+
+  def user_params
+    params.require(:user).permit(:name, :password)
+>>>>>>> 14ca255bf2db8ec5483aaede02274d1c8dcc583c
   end
 
 end
