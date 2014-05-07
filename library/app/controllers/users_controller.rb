@@ -31,14 +31,11 @@ class UsersController < ApplicationController
   end
  
   def index
-<<<<<<< HEAD
-    @users = User.all
-=======
-    #@users = User.order(:name)
+    @users = User.order(:name)
   end
   
   def new
-    @user = @book.users.new
+    @user = Users.new
   end
 
   def show
