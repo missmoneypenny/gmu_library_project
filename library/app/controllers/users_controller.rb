@@ -46,7 +46,6 @@ private
 
   def user_params
     params.require(:user).permit(:name, :password)
->>>>>>> 14ca255bf2db8ec5483aaede02274d1c8dcc583c
   end
 
 end
