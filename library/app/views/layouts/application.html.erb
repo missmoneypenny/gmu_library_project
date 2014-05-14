@@ -16,10 +16,12 @@
   <div class="container">
     <%#<div class="col-xs-9">
       <%= render '/shared/flashes' %>
-      <%= yield %>
-    <%#</div>%>
-    <div class="col-xs-3">
+      <%#</div>%>
+    <div class="col-xs-3" style="position:fixed; right:0">
       <%= render '/layouts/sidebar' %>
+    </div>
+    <div class="col-xs-9">
+    	<%= yield %>
     </div>
   </div>
   <%= render '/layouts/footer' %>
