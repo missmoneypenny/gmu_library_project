@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427153654) do
+ActiveRecord::Schema.define(version: 20140520223514) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140427153654) do
     t.integer  "total_in_library"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "price"
   end
 
   create_table "reservations", force: true do |t|
