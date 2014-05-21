@@ -6,7 +6,8 @@
   <%= f.label :isbn %> <%= f.text_field :isbn %><br />
   <%= f.select :genre, Book::GENRE, {prompt: "Pick one"} %><br />
   <%= f.label :abstract %> <%= f.text_field :abstract %><br />
-  <%= f.label :image_url %> <%= f.text_field :price %><br />
+  <%= f.label :published_on %> <%= f.text_field :published_on %><br />
+  <%= f.label :image_url %> <%= f.text_field :image_cover_url %><br />
   <p>
     <%= f.submit %>
     <%= link_to 'Cancel', books_path %>

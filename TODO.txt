@@ -1,0 +1,5 @@
+Gus - {Delete seeds - should be in lab
+Add admin conditional statements for Sidebar
+Add button to select admin to user}
+Rachel - cart info
+Sara - add data to database via gui

@@ -1,6 +1,12 @@
 Library::Application.routes.draw do
+  
   get "admin/index"
-  get "sessions/new"
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
   get "sessions/create"
   get "sessions/destroy"
   resources :users
@@ -12,7 +18,7 @@ Library::Application.routes.draw do
   resources :books
   
   #root 'books#index' 
-  root 'books#login' 
+  root 'sessions#new' 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
