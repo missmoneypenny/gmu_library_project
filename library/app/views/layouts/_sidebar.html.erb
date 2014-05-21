@@ -8,7 +8,11 @@
       <%= link_to 'All Books', books_path %>
     </p>
     <p>
-      <%= link_to 'Create Book', new_book_path %>
+      <% if admin? %>
+
+        <%= link_to 'Create Book', new_book_path %>
+
+      <% end %>
     </p>
   </div>
 </div>

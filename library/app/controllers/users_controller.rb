@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  before_action :admin
+
+  def admin
+    if !admin?
+      redirect_to books_url, alert: "You are not an admin"
+    end
+  end
+
   def create
     @user = User.new(user_params)
 
@@ -41,7 +49,7 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:name, :password, :password_confirmation, :admin)
   end
 
 end

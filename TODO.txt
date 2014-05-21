@@ -1,5 +1,13 @@
 Gus - {Delete seeds - should be in lab
 Add admin conditional statements for Sidebar
-Add button to select admin to user}
+Add button to select admin to user
+add links to create user to index/books i dont know}
 Rachel - cart info
 Sara - add data to database via gui
+
+User.find
+x = User.find(1)
+x.admin = true
+x.save
+
+bin/db_admin + raw SQL
