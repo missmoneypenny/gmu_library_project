@@ -1,0 +1,10 @@
+<%if notice %>
+<p id="notice"> <%= notice %> </p>
+<% end %>
+
+<h2>Your Reservations</h2>
+<ul>
+	<% @user.reservation.each do |item| %>
+	<li><%= item.book.title %></li>
+	<% end %>
+</ul>	
