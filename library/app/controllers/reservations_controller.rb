@@ -1,41 +1,42 @@
 class ReservationsController < ApplicationController
-before_action :set_reservation, only: [ :show, :edit, :update, :destroy]	
-
-def create
-	book = Book.find(params[:book_id])
-	@reservation = @user.reservation.build(book: book)
-
-	respond to do |format|
-		if @reservation.save
-			format.html {redirect_to reservation_url, notice: 'Reservation was successfully created.'}
-			format.json {render action: 'show', status: :created, location: @reservation}
-		else
-			format.html { render action: 'new'}	
-			format.json {render json: @reservation.errors, status: :unprocessable_entity}
-		end	
-	end
-end		
-
-def destroy
-	  @reservation.destroy
-	  redirect_to books_url
-	end
-
-def show
-	 end
-
-def edit
-	 end
-
-	def update
-	  if @reservation.update
-	        redirect_to @reservation, notice: "Reservations updated!"
-	      else
-	        render :new
-	      end
-	end	 	
+before_action :set_reservation, only: [:destroy]
 
 def new
-	  @reservation = Reservation.new
-	end	
+	@reservation = Reservation.new(
+		reservation_params.merge! (:reserved_on => (Time.now).to_date
+		:due_on => 7.days.since(Time.now).to_date,:user_id => session[:user_id]	))
+	if @reservation.save
+		find_book
+		redirect_to @book, notice: "You have reserved this book!"
+	else
+		render :new
+	end
+end
+
+def destroy
+	@reservation.destroy
+	redirect_to reservation_path
+end
+
+def index
+	@reservations = User.find(session[:user_id]).reservations
+end
+
+def show
+	@reservations = Reservation.order(:due_on)
+end
+
+private
+
+def reservation_params
+params.require(:reservation).permit(:book_id)	 					
+end
+
+def find_book
+	@book = Book.find(@reservation.book_id)
+end
+
+def set_reservation
+	@reservation = Reservation.find(params[:id])	
+end	
 end
