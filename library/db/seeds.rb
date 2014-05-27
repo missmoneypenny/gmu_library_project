@@ -7,4 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Book.create(isbn:'978-0451531513', title:'The Hunchback of Notre Dame', abstract:'Who is the monster and who is the man?', pages:528, genre:'classic', published_on:'1831-01-14', total_in_library:2)
 Book.create(isbn:'978-0439082822', title:'Captain Underpants', abstract:'A hero for the common man, by the common man', pages:121, genre:'children', published_on:'1997-01-09', total_in_library:3)
-
+User.create(name: 'Rachel', user_id: 'Rachel', password_digest: 'iluvrails', admin: true)
+User.create(name: 'Sara', user_id: 'Sara', password_digest: 'iluvrails', admin: true)
+User.create(name: 'Gus', user_id: 'Gus', password_digest: 'iluvrails', admin: false)
