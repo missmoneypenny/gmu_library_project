@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
   def admin
     if !admin?
-      redirect_to books_url, alert: "You are not an admin"
+     redirect_to books_url, alert: "You are not an admin"
     end
-  end
+ end 
 
   def create
     @user = User.new(user_params)
