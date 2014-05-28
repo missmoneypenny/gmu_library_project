@@ -1,39 +1,107 @@
-package edu.gmu.authorservice.web;
+package edu.gmu.authorservice.model;
 
-import edu.gmu.authorservice.dao.AuthorDao;
+import com.google.common.base.Objects;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Application;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import java.util.logging.Logger;
+import java.util.Date;
 
-@Path("/")
-public class AuthorResource {
+public class Author {
 
-    private static final Logger logger = Logger.getLogger(AuthorResource.class.getName());
+    private Integer _id;
+    private String _name;
+    private Date _dob;
+    private String _nationality;
+    private String _awards;
+    private String _biography;
+    private String _imageUrl;
 
-    private AuthorDao _authorDao;
-
-    public AuthorResource(@Context Application app) throws Exception {
-        _authorDao = (AuthorDao) app.getProperties().get("authorDao");
-        logger.info("Using AuthorDao implementation " + _authorDao.getClass().getSimpleName());
+    public Author() {
     }
 
-    // This is a sample method. You can verify your server is working by
-    // opening a browser and navigating to http://localhost:8080/gmulibrary/test
-    // You should see the text "This is the result. Success!" in your browser.
-    @Path("/test")
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String test() {
-        logger.info("Handling test request");
-        return "This is the result. Success!";
+    public Author(Integer id, String name, Date dob, String nationality, String biography, String awards, String imageUrl) {
+        _id = id;
+        _name = name;
+        _dob = dob;
+        _nationality = nationality;
+        _awards = awards;
+        _biography = biography;
+        _imageUrl = imageUrl;
     }
 
-    // TODO Implement two methods here: one to obtain all authors
-    // and a second to obtain an author by id
+    public Integer getId() {
+        return _id;
+    }
+
+    public void setId(Integer id) {
+        _id = id;
+    }
+
+    public String getName() {
+        return _name;
+    }
+
+    public void setName(String name) {
+        _name = name;
+    }
+
+    public Date getDob() {
+        return _dob;
+    }
+
+    public void setDob(Date dob) {
+        _dob = dob;
+    }
+
+    public String getNationality() {
+        return _nationality;
+    }
+
+    public void setNationality(String nationality) {
+        _nationality = nationality;
+    }
+
+    public String getAwards() {
+        return _awards;
+    }
+
+    public void setAwards(String awards) {
+        _awards = awards;
+    }
+
+    public String getBiography() {
+        return _biography;
+    }
+
+    public void setBiography(String biography) {
+        _biography = biography;
+    }
+
+    // NOTE: Do NOT change the name of this getter method. It ensures
+    // that when an Author instance is converted to JSON, the image URL
+    // property name is image_url and not imageUrl.
+    public String getImage_url() {
+        return _imageUrl;
+    }
+
+    // NOTE: Do NOT change the name of this setter method. It ensures
+    // that when JSON is converted to an Author instance, the image URL
+    // property name is image_url and not imageUrl.
+    public void setImage_url(String imageUrl) {
+        _imageUrl = imageUrl;
+    }
+
+    // Here we are using Google Guava's ToStringHelper class to create
+    // a nicely formatted string which is used whenever an Author object
+    // is converted to a String, either explicitly or implicitly.
+    public String toString() {
+        return Objects.toStringHelper(this)
+                .add("id", getId())
+                .add("name", getName())
+                .add("dob", getDob())
+                .add("nationality", getNationality())
+                .add("biography", getBiography())
+                .add("awards", getAwards())
+                .add("image_url", getImage_url())
+                .toString();
+    }
 
 }
