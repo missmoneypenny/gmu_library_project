@@ -1,4 +1,4 @@
-class Author < ActiveRecord::Base
+class Author < ActiveResource::Base
 self.site = 'http://localhost:8080/gmulibrary'
    self.format = :json
    self.headers['Accept'] = 'application/json'
