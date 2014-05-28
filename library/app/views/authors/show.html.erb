@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<article class="author">
+  <header>
+    <h2><%= @author.name %></h2>
+  </header>
+
+
+  <%= image_tag @author.image_url, class: "bookimage" %>
+
+  <p>
+  <%= @author.biography %>
+  <p>
+
+  <h4 class="clear">Details</h3>
+  <p><label>Date of Birth:</label> <%= @author.dob %></p>
+  <p><label>Nationality:</label> <%= @author.nationality %></p>
+  <p><label>Awards:</label> <%= @author.awards %></p>
+ 
+  <h4 class="clear">Publications</h3>
+    <table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Book.where({author: @author.name}).find_each do |book| %>
+      <tr>
+        <td><%= image_tag book.image_cover_url, class: "bookimage" %><span class="title"><%= link_to(book.title, book) %></span>
+        by <%= book.author %></td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
+  
+</article>

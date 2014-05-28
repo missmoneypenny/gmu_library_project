@@ -5,7 +5,7 @@
   <aside class="book-cover">
     <%= image_tag @book.image_cover_url %>
    </aside> 
-  <p><label>Author:</label> <%= @book.author %></p>
+  <p><label>Author:</label> <%= link_to(@book.author, author_path(:id => @book.author_id)) %></p>
   <p><label>Abstract:</label> <%= @book.abstract %></p>
   <p><label>ISBN:</label> <%= @book.isbn %></p>
   <p><label>Pages:</label> <%= number_with_delimiter(@book.pages) %></p>

@@ -9,13 +9,19 @@ Library::Application.routes.draw do
 
   get "sessions/create"
   get "sessions/destroy"
-  resources :users
+  resources :users do
+    resources :reservations
+   end 
 
   resources :authors
 
-  resources :reservations
+  resources :books do
+    get 'page/:page', :action => :index, :on => :collection
+  end
+  
+  get "resources/overdue"
+  get 'admin' => "admin#index" 
 
-  resources :books
   
   #root 'books#index' 
   root 'sessions#new' 
