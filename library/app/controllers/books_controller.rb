@@ -2,8 +2,12 @@ class BooksController < ApplicationController
 	before_action :set_book, only: [ :show, :edit, :update, :destroy ]
 
 	def index
-		@available_at = Time.now
-	  @books = Book.includes(:reservations).order(:title).page(params[:page])
+	  @available_at = Time.now
+	  if params[:search]
+      @books= Book.search(params[:search]).order(:title).page(params[:page])
+      else
+        @books = Book.order(:title).page(params[:page])
+    end
 	end
 
 	def show
