@@ -23,7 +23,7 @@ public class InMemoryAuthorDao implements AuthorDao {
             while (author.next()){
                 Integer aid= author.getInt("id");
                 String name=author.getString("name");
-                Date dob= author.getDate("dob");
+                String dob= author.getString("dob");
                 String nationality= author.getString("nationality");
                 Author t=new Author(aid,name,dob,nationality,"","","");
                 return t;
@@ -45,7 +45,7 @@ public class InMemoryAuthorDao implements AuthorDao {
             while (author.next()){
                 Integer aid= author.getInt("id");
                 String name=author.getString("name");
-                Date dob= author.getDate("dob");
+                String dob= author.getString("dob");
                 String nationality= author.getString("nationality");
                 authors.add(new Author(aid,name,dob,nationality,"","",""));
 
