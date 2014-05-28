@@ -1,0 +1,20 @@
+<h1>Overdue Books</h1>
+<div>
+
+	<ul>
+	<% if @reservations.exists? %>
+		<% @rservations.each do |reservation| %>
+			<% if Time.now > reservation.due_on %>
+					<li>
+						<%= image_tag reservation.book.image_cover_url %><br />
+						<%= link_to(reservation.book.title, reservation.book) %><br />
+						Reservation Reserved By <%= reservation.user.name %><br/>
+						Reserved on <%= reservation.reserved_on %><br />
+					</li>
+			<% end %>
+		<% end %>
+	<% else %>
+		<div class="flash alert alert-warngin">There are currently no overdue books.</div>
+	<% end %>
+	</ul>
+</div>

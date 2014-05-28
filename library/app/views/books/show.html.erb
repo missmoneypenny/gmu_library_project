@@ -3,8 +3,8 @@
     <h2><%= @book.title %></h2>
   </header>
   <aside class="book-cover">
-    <%= image_tag @book.image_cover_url %>
-   </aside> 
+    <%= image_tag @book.image_cover_url, class: 'cover'%>
+  </aside> 
   <p><label>Author:</label> <%= @book.author %></p>
   <p><label>Abstract:</label> <%= @book.abstract %></p>
   <p><label>ISBN:</label> <%= @book.isbn %></p>
@@ -14,8 +14,22 @@
   <p><label>Total in Library:</label> <%= @book.total_in_library %></p>
 </article>
 
+
 <%= link_to 'All Books', books_path %>
-| <%= link_to 'Edit', edit_book_path(@book) %>
-<%= button_to 'Delete', @book,
+<% if session[:is_admin] %>
+
+  <%= link_to 'Edit', edit_book_path(@book) %>
+  <%= button_to 'Delete', @book,
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
+<% end %>
+  <% if !Reservation.search(@book.id, session[:user_id]) %>
+    <%= form_for(Reservation.new) do |f| %>
+      <div><%= f.hidden_field :book_id, :value => @book.id %></div>
+      <%= f.submit %>
+    <% end %>
+  <% else %>
+    <div class="flash alert alert-warning">You have this book reserved - search your property and person, my liege</div>
+  <% end %>
+
+  
