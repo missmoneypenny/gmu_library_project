@@ -43,7 +43,7 @@ public class Author {
         _name = name;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return _dob;
     }
 

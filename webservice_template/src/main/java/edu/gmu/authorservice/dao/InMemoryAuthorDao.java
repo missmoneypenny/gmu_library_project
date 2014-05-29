@@ -16,7 +16,7 @@ public class InMemoryAuthorDao implements AuthorDao {
     @Override
     public Author getAuthor(Integer id) {
         String dbUrl= "jdbc:sqlite:db/authors.db";
-        SQLiteDataSource dataSource= SQLiteHelper.getDataSource(dbUrl);
+        SQLiteDataSource dataSource= (SQLiteDataSource) SQLiteHelper.getDataSource(dbUrl);
         try (Connection conn= dataSource.getConnection()){
             Statement stmt= conn.createStatement();
             ResultSet author= stmt.executeQuery("select * from authors where id=" + id);
@@ -37,7 +37,7 @@ public class InMemoryAuthorDao implements AuthorDao {
     @Override
     public Collection<Author> getAllAuthors() {
         String dbUrl= "jdbc:sqlite:db/authors.db";
-        SQLiteDataSource dataSource= SQLiteHelper.getDataSource(dbUrl);
+        SQLiteDataSource dataSource= (SQLiteDataSource) SQLiteHelper.getDataSource(dbUrl);
         try (Connection conn= dataSource.getConnection()){
             Statement stmt= conn.createStatement();
             List<Author> authors = new ArrayList<>();
