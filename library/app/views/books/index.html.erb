@@ -1,10 +1,13 @@
 <h1>Books</h1>
 <p>Available as of <%= formatted_time(@available_at) %></p>
 <%= page_entries_info @books %>
-<ol>
+<ul id="books-list" class='col-xs-12'>
 <% @books.each do |book| %>
-  <li><%= link_to(book.title, book) %> by <%= book.author %></li>
-
+<li>
+<%= image_tag book.image_cover_url, :class => "book-img col-xs-3" %>
+<%= link_to(book.title, book, :class => "book-title col-xs-9") %>
+<div class="book-auth col-xs-9">by <%= link_to(book.author, author_path(book.author_id)) %></div>
+</li>
 <% end %>
-</ol>
+</ul>
 <%= paginate @books %>

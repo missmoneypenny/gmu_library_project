@@ -48,7 +48,9 @@ class UsersController < ApplicationController
 
   def edit
   end
-
+def overdue
+    @reservations = current_user.reservations
+  end
 private
 
   def user_params

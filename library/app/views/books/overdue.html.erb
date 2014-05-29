@@ -1,0 +1,23 @@
+<h1>Overdue Book</h1>
+<%= page_entries_info @books %>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= image_tag book.image_cover_url, :class => "book-img col-xs-3" %><span class="title"><%= link_to(book.title, book) %></span>
+        by <%= book.author %></td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= paginate @books %>

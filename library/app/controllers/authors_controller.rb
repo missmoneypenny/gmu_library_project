@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-	before_action :set_author, only: [:show]
+ before_action :set_author, only: [:show]
   def index
     @authors = Author.all
   end
@@ -11,4 +11,6 @@ class AuthorsController < ApplicationController
     def set_author
       @author = Author.find(params[:id])
     end
+
+    
 end

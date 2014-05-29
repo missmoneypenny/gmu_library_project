@@ -1,21 +1,7 @@
-<h1>All Authors</h1>
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<h1>Authors</h1>
 
-  <tbody>
-    <% @authors.each do |author| %>
-      <tr>
-        <td><%= image_tag author.image_url, class: "bookimage" %><span class="title"><%= link_to(author.name, author) %></span>
-       </td>
-       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<ul>
+<% @authors.each do |author| %>
+   <li><%= image_tag author.image_url %> <%= link_to(author.name, author) %> </li>
+<% end %>
+</ul>

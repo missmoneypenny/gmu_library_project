@@ -11,6 +11,8 @@ class BooksController < ApplicationController
 	end
 
 	def show
+	@available_to_reserve = @book.total_in_library - @book.reservations.count
+    @reserved_by_user = current_user.reservations.where(book: @book).exists?
 	 end
 
 	def new
@@ -42,6 +44,7 @@ class BooksController < ApplicationController
 	  redirect_to books_url
 	end
 
+			
 	private
 
 	def book_params

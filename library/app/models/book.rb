@@ -6,7 +6,7 @@ class Book < ActiveRecord::Base
   validates :genre, inclusion: { in: GENRE }
  has_many :reservations
  	def self.search(search)
-		where('title LIKE ? OR isbn LIKE ? OR author LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+ 		where('title LIKE ? OR isbn LIKE ? OR author LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
 	end
   
 end

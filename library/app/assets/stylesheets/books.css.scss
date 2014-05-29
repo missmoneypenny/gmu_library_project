@@ -6,3 +6,32 @@
 	width: 250px;
 	height: auto;
 }	
+
+#search-form
+{
+	float: right;
+}
+
+#books-list {
+  >li {
+    background-color: rgba(245, 245, 255, .90);
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    list-style-type: none;
+    padding: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+    img.book-img {
+      height: 150px;
+      padding: 10px;
+      vertical-align: middle;
+      width: auto;
+      max-width: 107px;
+    }
+    .book-title {
+      font-size: 13pt;
+line-height: 18px;
+margin-top: 20px;
+    }
+  }
+}

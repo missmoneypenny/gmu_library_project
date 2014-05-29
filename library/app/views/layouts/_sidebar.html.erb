@@ -6,6 +6,7 @@
   <div class="panel-body">
   <% if session[:user_id] %>
     <p><%= link_to 'All Books', books_path %></p>
+    <p><%= link_to 'All Authors', authors_path %></p>
     <p><%= link_to 'My Reservations', reservations_path %></p>
     <% if session[:is_admin] %>
        <p><%= link_to 'Create Book', new_book_path %></p>
